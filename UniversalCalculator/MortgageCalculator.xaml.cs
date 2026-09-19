@@ -80,7 +80,7 @@ namespace Calculator
 
 		private void exitButton_Click(object sender, Windows.UI.Xaml.RoutedEventArgs e)
 		{
-			Application.Current.Exit();
+			Frame.Navigate(typeof(MainMenu));
 		}
     }
 }

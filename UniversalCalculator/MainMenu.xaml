@@ -54,8 +54,8 @@
 					<!-- Yet to set up this button to click. Direct to MainPage file. -->
 					<Button x:Name="mathCalc" Content="Math Calculator"  />
 
-					<!-- Yet to set up this button to click. Direct to Calculator file. -->
-					<Button x:Name="mortgageCalc" Content="Mortgage Calculator" />
+					<!-- Direct to Mortgage Calculator file. -->
+					<Button x:Name="mortgageCalc" Content="Mortgage Calculator" Click="mortgageCalc_Click"/>
 
 					<!-- Yet to set up this button to click. Direct to Currency file. -->
 					<Button x:Name="currencyCalc" Content="Currency Calculator" />
