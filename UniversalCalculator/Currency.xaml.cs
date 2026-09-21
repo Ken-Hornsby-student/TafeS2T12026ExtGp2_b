@@ -36,15 +36,19 @@ namespace Calculator
 
 		// Global definitions for Summation Methods
 		public double exchangeValue = 0;
-		public string currencyFrom = "currencyFrom";
+
+		//public string currencyFrom = "currencyFrom";
 		public string exchangeRatePartA = "fromExchange";
-		public string currencyTo = "toCurrency";
+
+		//public string currencyTo = "toCurrency";
 		public string exchangeRatePartB = "exchangeTo";
 		public string exchangeRateBearing = "A + B";
 		//public int exchangeRateCalled = 1;
 		public float requiredExchangeRate = 1;
 		public double calculatedExchangeAmount = 1;
-		public double theFlipExchangeRate = 1;
+		public float theFlipExchangeRate = 1;
+		public string toCurrencyString = "";
+		public string fromCurrencyString = "";
 
 
 		// Four fixed exchange currencies
@@ -113,7 +117,7 @@ namespace Calculator
 
 			//	From currency. Place selected from currency into text box.
 
-			currencyFrom = (currencyFromComboBox.Text);
+			string currencyFrom = (string)currencyFromComboBox.SelectedItem;
 
 			//fromAmountAndCurrency.Text = "British Pound";
 
@@ -144,7 +148,7 @@ namespace Calculator
 
 			//	To currency. Place selected to currency into text box.
 
-			currencyTo = (currencyToComboBox.Text);
+			string currencyTo = (string)currencyToComboBox.SelectedItem;
 			//toAmountAndCurrency.Text = "to British Pound";
 
 
@@ -183,64 +187,100 @@ namespace Calculator
 			if (exchangeRateBearing == "usDollarToEuro")
 			{
 				requiredExchangeRate = usDollarToEuro;
+				theFlipExchangeRate = euroToUSDollar;
+				fromCurrencyString = "US Dollar";
+				toCurrencyString = "Euro";
 			}
 
 			else if (exchangeRateBearing == "usDollarToPound")
 			{
 				requiredExchangeRate = usDollarToPound;
+				theFlipExchangeRate = poundToUSDollar;
+				fromCurrencyString = "US Dollar";
+				toCurrencyString = "Pound";
 			}
 
 			else if (exchangeRateBearing == "usDollarToRupee")
 			{
 				requiredExchangeRate = usDollarToRupee;
+				theFlipExchangeRate = rupeeToUSDollar;
+				fromCurrencyString = "US Dollar";
+				toCurrencyString = "Rupee";
 			}
 
 			// European Euro to other currencies.
 			if (exchangeRateBearing == "euroToUSDollar")
 			{
 				requiredExchangeRate = euroToUSDollar;
+				theFlipExchangeRate = usDollarToEuro;
+				fromCurrencyString = "Euro";
+				toCurrencyString = "US Dollar";
 			}
 
 			else if (exchangeRateBearing == "euroToPound")
 			{
 				requiredExchangeRate = euroToPound;
+				theFlipExchangeRate = poundToEuro;
+				fromCurrencyString = "Euro";
+				toCurrencyString = "Pound";
 			}
 
 			else if (exchangeRateBearing == "euroToRupee")
 			{
 				requiredExchangeRate = euroToRupee;
+				theFlipExchangeRate = rupeeToEuro;
+				fromCurrencyString = "Euro";
+				toCurrencyString = "Rupee";
 			}
 
 			// British Pound to other currencies.
 			else if (exchangeRateBearing == "poundToUSDollar")
 			{
 				requiredExchangeRate = poundToUSDollar;
+				theFlipExchangeRate = usDollarToPound;
+				fromCurrencyString = "Pound";
+				toCurrencyString = "US Dollar";
 			}
 
 			else if (exchangeRateBearing == "poundToEuro")
 			{
 				requiredExchangeRate = poundToEuro;
+				theFlipExchangeRate = euroToPound;
+				fromCurrencyString = "Pound";
+				toCurrencyString = "Euro";
 			}
 
 			else if (exchangeRateBearing == "poundToRupee")
 			{
 				requiredExchangeRate = poundToRupee;
+				theFlipExchangeRate = rupeeToPound;
+				fromCurrencyString = "Pound";
+				toCurrencyString = "Rupee";
 			}
 
 			// Indian Rupee to other currencies.
 			else if (exchangeRateBearing == "rupeeToUSDollar")
 			{
 				requiredExchangeRate = rupeeToUSDollar;
+				theFlipExchangeRate = usDollarToRupee;
+				fromCurrencyString = "Rupee";
+				toCurrencyString = "US Dollar";
 			}
 
-			else if (exchangeRateBearing == "rupeToEuro")
+			else if (exchangeRateBearing == "rupeeToEuro")
 			{
 				requiredExchangeRate = rupeeToEuro;
+				theFlipExchangeRate = euroToRupee;
+				fromCurrencyString = "Rupee";
+				toCurrencyString = "Euro";
 			}
 
 			else if (exchangeRateBearing == "rupeeToPound")
 			{
 				requiredExchangeRate = rupeeToPound;
+				theFlipExchangeRate = poundToRupee;
+				fromCurrencyString = "Rupee";
+				toCurrencyString = "Pound";
 			}
 
 			//	Calculate the exchange amount.
@@ -248,17 +288,14 @@ namespace Calculator
 			//theFlipExchangeRate =     <-------- ?? Auto fill fields and run through a second time.
 			//                                       Need Classes, Attributes and Methods set up.
 			exchangeValue = double.Parse(exchangeAmountTextBox.Text);
-			currencyFrom = (currencyFromComboBox.Text);
+			//currencyFrom = (currencyFromComboBox.Text);
 			calculatedExchangeAmount = (exchangeValue * requiredExchangeRate);
 
-			//	Write text in side panel Text Blocks.        <---------- ?? Values are not coming through? 
-			//fromAmountAndCurrencyTextBlock.Text = (exchangeValue + " " + currencyFrom + exchangeRatePartA);
-			//toAmountAndCurrencyTextBlock.Text = (calculatedExchangeAmount + " " + currencyTo + exchangeRatePartB);
-			fromAmountAndCurrencyTextBlock.Text = (exchangeValue + " " + currencyFrom);
-			toAmountAndCurrencyTextBlock.Text = (calculatedExchangeAmount + " " + currencyTo);
-			exchangeRateTextBlock.Text = (" 1 " + exchangeRatePartA + " " + requiredExchangeRate);
-			flipExchangeRateTextBlock.Text = (" 1 " + exchangeRatePartB + " " + theFlipExchangeRate + " ?Flip? ");
-
+			//	Write text in side panel Text Blocks.
+			fromAmountAndCurrencyTextBlock.Text = ("   " + exchangeValue + " " + fromCurrencyString + "s exchanges to");
+			toAmountAndCurrencyTextBlock.Text = ("   " + calculatedExchangeAmount + " " + toCurrencyString + "s.");
+			exchangeRateTextBlock.Text = ("1 " + fromCurrencyString + " to " + toCurrencyString + " exchange rate is " + requiredExchangeRate);
+			flipExchangeRateTextBlock.Text = ("1 " + toCurrencyString + " to " + fromCurrencyString + " exchange rate is " + theFlipExchangeRate);
 
 		}
 

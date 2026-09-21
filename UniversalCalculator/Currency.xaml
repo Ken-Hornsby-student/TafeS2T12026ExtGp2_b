@@ -130,13 +130,13 @@
 
 
 				<!-- Center Horizontal Stack Panel with Text Boxes and information -->
-				<StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Height="180" Width="570"  Padding="5" >
+				<StackPanel Orientation="Horizontal" HorizontalAlignment="Left" Height="180" Width="620" Padding="5" >
 
 					<StackPanel Orientation="Vertical" >
-						<TextBlock x:Name="fromAmountAndCurrencyTextBlock" Style="{StaticResource leftSideWritting}" Text="Amount and Currency" />
-						<TextBlock x:Name="toAmountAndCurrencyTextBlock" Style="{StaticResource leftSideWritting}" Text="to amount and currency." />
-						<TextBlock x:Name="exchangeRateTextBlock" Style="{StaticResource leftSideWritting}" Text="Enquired exchange rate." />
-						<TextBlock x:Name="flipExchangeRateTextBlock" Style="{StaticResource leftSideWritting}" Foreground="White" Text="Fliped exchange rate." />
+						<TextBlock x:Name="fromAmountAndCurrencyTextBlock" Style="{StaticResource leftSideWritting}" Text="Amount and Currency" Width="500" />
+						<TextBlock x:Name="toAmountAndCurrencyTextBlock" Style="{StaticResource leftSideWritting}" Text="to amount and currency." Width="500" />
+						<TextBlock x:Name="exchangeRateTextBlock" Style="{StaticResource leftSideWritting}" Text="Enquired exchange rate." Width="500" />
+						<TextBlock x:Name="flipExchangeRateTextBlock" Style="{StaticResource leftSideWritting}" Foreground="White" Text="Fliped exchange rate." Width="500" />
 					</StackPanel>
 
 				</StackPanel>
